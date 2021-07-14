@@ -27,7 +27,7 @@ class Subcategories extends Component {
         return (
             <div>
                 {this.state.subcategories.map(subcategory =>
-                    <li key={subcategory.id}>{subcategory.name}</li>)}
+                    <li key={subcategory.name}>{subcategory.name}</li>)}
             </div>
         );
     }

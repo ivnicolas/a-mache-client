@@ -21,7 +21,6 @@ class Categories extends Component {
         })
     }
 
-
     render() {
         return (
             <ul>
