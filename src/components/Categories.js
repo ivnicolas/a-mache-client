@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Subcategories from './Subcategories.js'
 import {connect} from "react-redux"
 import {fetchCategories} from '../redux/actions/categoryActions.js'
+import { Link } from 'react-router-dom';
 
 
 
 // you need to understand how this flow is working. why are calling component did mount? why can't you use setState is component did mount?
-
+// do you even need your constructor?
 class Categories extends Component {
 
     constructor(){
@@ -16,19 +17,21 @@ class Categories extends Component {
         }
     }
 
-    componentDidMount(){ 
+    // componentDidMount(){ 
 
-      this.props.fetchCategories()
+    //   this.props.fetchCategories()
 
-    }
+    // }
 
     render() {
         return (
             <ul>
                  {this.props.categories.map(category => 
                 <>
-                     
-                     <h4 className="test" key={category.id}>{category.name}</h4>
+                   
+
+
+                     <h4 className="test" key={category.id}><Link to={`categories/${category.id}/posts`}>{category.name}</Link></h4>
                     <Subcategories category_id={category.id}/>
                     </>
                 )}
@@ -45,5 +48,5 @@ function mapStateToProps(globalState) {
     }
 }
 
-
-export default connect(mapStateToProps,{fetchCategories})(Categories);
+export default connect(mapStateToProps)(Categories);
+// export default connect(mapStateToProps,{fetchCategories})(Categories);

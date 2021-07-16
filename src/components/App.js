@@ -3,15 +3,36 @@ import '../App.css';
 import React, { Component } from 'react';
 import Header from './Header.js';
 import Categories from './Categories';
+import PostForm from './PostForm';
 
+import BrowserRouter from './BrowserRouter';
+import {connect} from "react-redux"
+import {fetchCategories} from '../redux/actions/categoryActions.js'
+import { fetchSubcategories } from '../redux/actions/subcategoryActions.js';
+import { fetchPosts} from '../redux/actions/postActions.js'
 
-const App = () =>(
-  <div>
-  <Header/>
-  {/* <Navbar/>
-  <Footer /> */}
-  <Categories/>
-  </div>
-)
+class App extends Component {
 
-export default App;
+  componentDidMount(){ 
+
+    this.props.fetchCategories()
+    this.props.fetchSubcategories()
+    this.props.fetchPosts()
+
+  }
+  render() {
+    return (
+      <div>
+        <BrowserRouter/>
+         {/* <Header/>
+          <PostForm/>
+          {/* <Navbar/>
+          <Footer /> 
+          <Categories/> */}
+      </div>
+    );
+  }
+}
+
+export default connect (null, {fetchSubcategories,fetchCategories,fetchPosts})(App) ;
+
