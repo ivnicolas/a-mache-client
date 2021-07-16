@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {addPosts} from '../redux/actions/postActions'
-import {DropdownOptions} from './DropdownOptions.js'
+import DropdownOptions from './DropdownOptions.js'
 
 class PostForm extends Component {
 
@@ -95,7 +95,7 @@ class PostForm extends Component {
                 <br/>
                 <label>Category: </label>
                 {/* <input type="text" value={this.state.category} onChange={this.handleChange} name="category"  /> */}
-                <select value={this.state.category} onChange={this.handleDropdown} name="category">
+                <select value={this.state.category} onChange={this.handleChange} name="category">
                     <option value =""> </option>
                     {this.props.categories.map(category=>
                         <option value={category.id}>{category.name}</option>)}
@@ -107,7 +107,7 @@ class PostForm extends Component {
                 <label>Subcategory: </label>
                 <select value={this.state.subcategory} onChange={this.handleDropdown} name="subcategory">
                     
-                {/* <DropdownOptions categoryID={this.state.category} subcategories={this.props.subcategory}/> */}
+                    <DropdownOptions categoryID={this.state.category} subcategories={this.props.subcategories}/>
                 </select>
             {/* <label>Subcategory: </label>
 

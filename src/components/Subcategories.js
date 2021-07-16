@@ -45,7 +45,7 @@ class Subcategories extends Component {
             <div>
               
                 {this.props.subcategories.map(subcategory =>
-                    <li key={subcategory.id}><Link to={`subcategories/${subcategory.id}/posts`}>{subcategory.name}</Link></li>)}
+                    <li key={subcategory.id}><Link to={`/subcategories/${subcategory.id}/posts`}>{subcategory.name}</Link></li>)}
             </div>
         );
     }
