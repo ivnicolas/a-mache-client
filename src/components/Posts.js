@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
+// import Post from "./Post"
+import { Link ,useHistory, useParams} from 'react-router-dom';
+// import { useHistory, useParams } from 'react-router-dom'
+
 
 class Posts extends Component {
+
+   
     render() {
         return (
             <div>
 
-                <h1>hi</h1>
-                {/* {this.props.posts.map(post =>
+                {this.props.posts.map(post =>
+                    
                     <>
-                    <h4>{post.title}</h4>
-                    </>)} */}
+                    <h3><Link to={`/subcategories/${post.subcategory_id}/posts/${post.id}`}>{post.title}</Link></h3>
+                    </>)}
             </div>
         );
     }
