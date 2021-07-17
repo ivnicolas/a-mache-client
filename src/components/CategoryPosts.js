@@ -12,7 +12,7 @@ const CategoryPosts = (props) => {
             {props.posts.map(post =>
 //                  
 //                     {console.log('hi')}
-                    <h3>{post.title}</h3>
+                    <h3><Link to={`/categories/${post.category_id}/posts/${post.id}`}>{post.title}</Link></h3>
                     
                    )}
 
@@ -41,8 +41,8 @@ const CategoryPosts = (props) => {
 function mapStateToProps(globalState, ownProps){
     const categoryId = parseInt(ownProps.match.params.categoryId)
     console.log(categoryId)
-
-    return {posts: globalState.post.filter(apost => apost.category_id === categoryId)}
+    console.log("Category or Subcategory", ownProps.match.params)
+    return {posts: globalState.post.filter(post => post.category_id === categoryId)}
     
 }
 

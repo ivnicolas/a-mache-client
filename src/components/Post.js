@@ -1,11 +1,22 @@
 import React from 'react';
+import {connect} from "react-redux"
 
-const Post = () => {
+const Post = (props) => {
+    console.log(props.post)
     return (
         <div>
-            <h1>A singular post</h1>
+            <h2>{props.post.title}</h2>
+            <h4>{props.post.description}</h4>
         </div>
     );
 };
 
-export default Post;
+
+function mapStateToProps(globalState, ownProps){
+    console.log(ownProps.match.params)
+    const postId = parseInt(ownProps.match.params.postId)
+    // if(ownProps.match.params[categoryId]){}
+    return {post: globalState.post.find(post => post.id === postId)}
+        
+}
+export default connect(mapStateToProps)(Post);
