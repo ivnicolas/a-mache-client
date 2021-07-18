@@ -1,6 +1,7 @@
 body{
-  background-color: #282c34;
-  color: white;
+  background: #F9F8FD;
+  font-family: 'Lexend Exa', sans-serif;
+  color: blue;
 }
 
 button{ 
@@ -8,6 +9,17 @@ button{
   /* text-align: right;
   justify-content: flex-end; */
 }
+
+nav {
+   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  border: 2px solid #EBECF1;
+  border-radius: 30px;
+  animation: slide-in 1s ease-out;
+}
+
 .App {
   text-align: center;
 }
@@ -71,3 +83,5 @@ button{
   justify-items: center;
   align-content: space-evenly;
   align-items: center;}
+
+  

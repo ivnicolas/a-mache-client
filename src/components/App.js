@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import '../App.css';
 import React, { Component } from 'react';
 import Header from './Header.js';
+import NavBar from "./NavBar"
 import Categories from './Categories';
 import PostForm from './PostForm';
 
@@ -23,6 +24,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header/>
+        <NavBar/>
         <BrowserRouter/>
          {/* <Header/>
           <PostForm/>

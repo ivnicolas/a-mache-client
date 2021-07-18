@@ -10,8 +10,7 @@ const CategoryPosts = (props) => {
         <>
             <h1>Category Posts</h1>
             {props.posts.map(post =>
-//                  
-//                     {console.log('hi')}
+
                     <h3><Link to={`/categories/${post.category_id}/posts/${post.id}`}>{post.title}</Link></h3>
                     
                    )}

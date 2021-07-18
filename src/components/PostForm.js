@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {addPosts} from '../redux/actions/postActions'
 import DropdownOptions from './DropdownOptions.js'
+import Post from './Post';
 
 class PostForm extends Component {
 
@@ -43,7 +44,9 @@ class PostForm extends Component {
     handleSubmit = (e) =>{
         e.preventDefault()
         this.props.addPosts(this.state)
+        this.props.history.push('/post')
         this.setState({title: "",description: "", price: "" , photo:"",contact_email: "", contact_phone:  "",category: "", subcategory: ""})
+        // this.props.history.push('/post')
     }
 
     handleDropdown=(e)=>{
@@ -72,7 +75,11 @@ class PostForm extends Component {
     render() {
         console.log("IN RENDER" ,this.state)
         return (
+
+            
             <form onSubmit={this.handleSubmit}>
+
+                
                 <label>Title: </label>
                 <input type="text" value={this.state.title} onChange={this.handleChange} name="title"  />
                 <br/>
@@ -106,7 +113,7 @@ class PostForm extends Component {
                 <br/>
                 <label>Subcategory: </label>
                 <select value={this.state.subcategory} onChange={this.handleDropdown} name="subcategory">
-                    
+                    <option value =""> </option>
                     <DropdownOptions categoryID={this.state.category} subcategories={this.props.subcategories}/>
                 </select>
             {/* <label>Subcategory: </label>

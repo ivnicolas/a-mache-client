@@ -28,10 +28,8 @@ class Categories extends Component {
             <ul>
                  {this.props.categories.map(category => 
                 <>
-                   
-
-
-                     <h4 className="test" key={category.id}><Link to={`categories/${category.id}/posts`}>{category.name}</Link></h4>
+                  { console.log("CATE ID", category.id)}
+                    <h4 className="test" key={category.id}><Link to={`categories/${category.id}/posts`}>{category.name}</Link></h4>
                     <Subcategories category_id={category.id}/>
                     </>
                 )}

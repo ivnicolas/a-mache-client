@@ -13,10 +13,17 @@ const Post = (props) => {
 
 
 function mapStateToProps(globalState, ownProps){
-    console.log(ownProps.match.params)
-    const postId = parseInt(ownProps.match.params.postId)
-    // if(ownProps.match.params[categoryId]){}
-    return {post: globalState.post.find(post => post.id === postId)}
+
+  
+    if(ownProps.match.params.postId){
+        
+        const postId = parseInt(ownProps.match.params.postId)
+        return {post: globalState.post.find(post => post.id === postId)}
+    }else {
+     
+        return {post: globalState.post[globalState.post.length -1]}
+    }
+   
         
 }
 export default connect(mapStateToProps)(Post);
