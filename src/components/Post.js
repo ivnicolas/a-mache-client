@@ -7,6 +7,7 @@ const Post = (props) => {
         <div>
             <h2>{props.post.title}</h2>
             <h4>{props.post.description}</h4>
+            <h5>{props.post.price}</h5>
         </div>
     );
 };

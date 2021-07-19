@@ -16,7 +16,8 @@ class PostForm extends Component {
             contact_email: "", 
             contact_phone:  "",
             category: "", 
-            subcategory: ""
+            subcategory: "",
+            errors: []
         }
     }
     // state = {
@@ -41,12 +42,67 @@ class PostForm extends Component {
 
     } 
 
+    isBlank(value){      
+        return(value == undefined || value == null || value.trim() == '');
+    }
+
+    validate(title,description,category, subcategory) {
+        // we are going to store errors for all fields
+        // in a signle array
+        const errors = [];
+      
+        if (this.isBlank(title)) {
+          errors.push("Title can't be empty");
+        }
+        if (this.isBlank(description)) {
+            errors.push("Description can't be empty");
+        }
+        if (this.isBlank(category)) {
+            errors.push("Category field must be completed");
+        }
+        if (this.isBlank(subcategory)) {
+            errors.push("Subategory field must be completed");
+          }
+        return errors;
+      }
+
     handleSubmit = (e) =>{
         e.preventDefault()
-        this.props.addPosts(this.state)
-        this.props.history.push('/post')
-        this.setState({title: "",description: "", price: "" , photo:"",contact_email: "", contact_phone:  "",category: "", subcategory: ""})
+       
+        const title = this.state.title 
+        const description = this.state.description
+        const category = this.state.category
+        const subcategory = this.state.subcategory 
+
+        const errors = this.validate(title,description,category, subcategory);
+        if (errors.length > 0) {
+            console.log(errors)
+        this.setState({errors:errors });
+        debugger
+        return;
+        }else {
+            let newpost = {
+                title: this.state.title,
+                description: this.state.description, 
+                price: this.state.price, 
+                photo: this.state.photo, 
+                contact_email: this.state.email, 
+                contact_phone: this.state.contact_phone, 
+                category: this.state.category, 
+                subcategory: this.state.subcategory, 
+                tags: this.state.tags
+            }
+              
+            console.log(newpost)
+            this.props.addPosts(newpost)
+            this.props.history.push('/post')
+            this.setState({title: "",description: "", price: "" , photo:"",contact_email: "", contact_phone:  "",category: "", subcategory: ""})
+            // this.props.history.push('/post')
+        }
+        // this.props.addPosts(this.state)
         // this.props.history.push('/post')
+        // this.setState({title: "",description: "", price: "" , photo:"",contact_email: "", contact_phone:  "",category: "", subcategory: ""})
+        // // this.props.history.push('/post')
     }
 
     handleDropdown=(e)=>{
@@ -79,12 +135,24 @@ class PostForm extends Component {
             
             <form onSubmit={this.handleSubmit}>
 
+               {this.state.errors.map(error => (
+          <p key={error}>Error: {error}</p>
+        ))} 
+
+               {/* {if(this.state.errors){
+                   this.state.erros.map((error => (
+                    <p key={error}>Error: {error}</p>
+                  )))
+               }} */}
+               
+              
+
                 
                 <label>Title: </label>
-                <input type="text" value={this.state.title} onChange={this.handleChange} name="title"  />
+                <input type="text" value={this.state.title} onChange={this.handleChange} name="title"  required/>
                 <br/>
                 <label>Description: </label>
-                <textarea type="text" value={this.state.description} onChange={this.handleChange} name="description"  />
+                <textarea type="text" value={this.state.description} onChange={this.handleChange} name="description"  required/>
                 <br/>
                 <label>Price: </label>
                 <input type="number" step="any" value={this.state.price} onChange={this.handleChange} name="price"  />
@@ -102,7 +170,7 @@ class PostForm extends Component {
                 <br/>
                 <label>Category: </label>
                 {/* <input type="text" value={this.state.category} onChange={this.handleChange} name="category"  /> */}
-                <select value={this.state.category} onChange={this.handleChange} name="category">
+                <select value={this.state.category} onChange={this.handleChange} name="category" required>
                     <option value =""> </option>
                     {this.props.categories.map(category=>
                         <option value={category.id}>{category.name}</option>)}
