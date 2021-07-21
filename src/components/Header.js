@@ -2,8 +2,9 @@ import React from 'react';
 
 const Header = () =>(
     <div>
-        <header className="App-header">
-        <h1>A Mache: Sell and Buy Goods</h1>
+        <header className="header">
+        <h1 id="header-title">A Mache</h1>
+        <h6>Online Classifieds and Marketplace!</h6>
         </header>
      </div>
 )

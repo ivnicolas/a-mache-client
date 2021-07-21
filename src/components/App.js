@@ -1,16 +1,16 @@
-import logo from '../logo.svg';
+
 import '../App.css';
 import React, { Component } from 'react';
 import Header from './Header.js';
 import NavBar from "./NavBar"
-import Categories from './Categories';
-import PostForm from './PostForm';
-
 import BrowserRouter from './BrowserRouter';
 import {connect} from "react-redux"
+
+import Footer from './Footer'
 import {fetchCategories} from '../redux/actions/categoryActions.js'
 import { fetchSubcategories } from '../redux/actions/subcategoryActions.js';
 import { fetchPosts} from '../redux/actions/postActions.js'
+
 
 class App extends Component {
 
@@ -27,11 +27,7 @@ class App extends Component {
         <Header/>
         <NavBar/>
         <BrowserRouter/>
-         {/* <Header/>
-          <PostForm/>
-          {/* <Navbar/>
-          <Footer /> 
-          <Categories/> */}
+        <Footer/>
       </div>
     );
   }
