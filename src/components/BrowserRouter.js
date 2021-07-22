@@ -1,14 +1,12 @@
 import React from 'react';
 import { Route, Switch} from 'react-router';
 
-import Categories from './Categories';
+import Categories from '../containers/Categories';
 import About from './About';
 import Safety from './Safety';
-import Posts from './Posts';
+import Posts from '../containers/Posts';
 import PostForm from './PostForm';
 import Post from './Post';
-
-
 
 const BrowserRouter = () => {
     return (
@@ -19,7 +17,7 @@ const BrowserRouter = () => {
             <Route  exact path ="/categories/:categoryId/posts" component={Posts}/>
             < Route exact path ="/categories/:categoryId/posts/:postId" component={Post}/>
             <Route exact path ='/post' component={Post}/>
-            <Route exact path ='/post-search' component={Posts}/>
+            <Route exact path ='/posts' component={Posts}/>
             <Route exact path ='/about' component={About}/>
             <Route exact path ='/safety' component={Safety}/>
             <Route exact path ='/new-post' component={PostForm}/>

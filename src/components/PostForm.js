@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {addPosts} from '../redux/actions/postActions'
 import DropdownOptions from './DropdownOptions.js'
 
-
 class PostForm extends Component {
 
     constructor(){

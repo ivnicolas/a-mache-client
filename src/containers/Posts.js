@@ -10,7 +10,7 @@ const Posts = (props) => {
     }else {
         return (
             <>
-                <h2 className="postings-title">{props.title.name} Postings</h2>
+                <h2 className="postings-title">{props.title}</h2>
                 {props.posts.map(post =>
                     <>
                     <h4 className="group-postings"><Link to={`/subcategories/${post.subcategory_id}/posts/${post.id}`}>{post.title} - {new Date(post.created_at).toLocaleDateString()}</Link></h4>
@@ -25,17 +25,17 @@ function mapStateToProps(globalState, ownProps){
         const id = parseInt(ownProps.match.params.categoryId)
         return {
             posts: globalState.post.filter(post => post.category_id === id),
-            title: globalState.category.find(category => category.id === id)
+            title: `${globalState.category.find(category => category.id === id).name} Postings`
        }
     }else if (ownProps.match.params.subcategoryId) {
         const id = parseInt(ownProps.match.params.subcategoryId)
         return {posts: globalState.post.filter(post => post.subcategory_id === id),
-                title: globalState.subcategory.find(subcategory => subcategory.id === id)
+                title: `${globalState.subcategory.find(subcategory => subcategory.id === id).name} Postings`
             }
     }else{
-        debugger
-        return{posts:globalState.post,
-                title: "All Posts"}
+        const query = ownProps.history.location.state.input
+        return{posts:globalState.post.filter(post => post.title.toLowerCase().includes(query.toLowerCase())),
+                title: "Search Results"}
     }
 }
 

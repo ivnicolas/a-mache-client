@@ -3,23 +3,14 @@ import {connect} from "react-redux"
 import { fetchSubcategories } from '../redux/actions/subcategoryActions.js';
 import { Link } from 'react-router-dom';
 
-class Subcategories extends Component {
-    constructor(props){
-        super()
-        this.state = {
-            category_id: props.category_id,
-        }
-    }
-
-    render() {
+const Subcategories = (props) => {
         return (
             <div className="subcategories">
-              
-                {this.props.subcategories.map(subcategory =>
+                {props.subcategories.map(subcategory =>
                     <li  key={subcategory.id} ><Link to={`/subcategories/${subcategory.id}/posts`}>{subcategory.name}</Link></li>)}
             </div>
         );
-    }
+    
 }
 
 function mapStateToProps(globalState,ownProps) {
