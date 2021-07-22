@@ -32,6 +32,10 @@ function mapStateToProps(globalState, ownProps){
         return {posts: globalState.post.filter(post => post.subcategory_id === id),
                 title: globalState.subcategory.find(subcategory => subcategory.id === id)
             }
+    }else{
+        debugger
+        return{posts:globalState.post,
+                title: "All Posts"}
     }
 }
 

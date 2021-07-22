@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from './Search';
 
 const NavBar = () => {
     return (
@@ -20,10 +21,7 @@ const NavBar = () => {
                                 <a className="nav-link" href="/safety" style={{color: 'white'}}>Safety and Scams</a>
                             </li>
                         </ul>
-                        <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit" style={{color: 'white'}}>Search</button>
-                        </form>
+                            <Search/>
                     </div>
 
     </nav>

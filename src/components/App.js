@@ -6,6 +6,7 @@ import NavBar from "./NavBar"
 import BrowserRouter from './BrowserRouter';
 import {connect} from "react-redux"
 
+
 import Footer from './Footer'
 import {fetchCategories} from '../redux/actions/categoryActions.js'
 import { fetchSubcategories } from '../redux/actions/subcategoryActions.js';

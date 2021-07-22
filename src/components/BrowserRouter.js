@@ -19,6 +19,7 @@ const BrowserRouter = () => {
             <Route  exact path ="/categories/:categoryId/posts" component={Posts}/>
             < Route exact path ="/categories/:categoryId/posts/:postId" component={Post}/>
             <Route exact path ='/post' component={Post}/>
+            <Route exact path ='/post-search' component={Posts}/>
             <Route exact path ='/about' component={About}/>
             <Route exact path ='/safety' component={Safety}/>
             <Route exact path ='/new-post' component={PostForm}/>

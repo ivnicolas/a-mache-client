@@ -80,20 +80,6 @@ class PostForm extends Component {
         }   
     }
 
-    handleDropdown=(e)=>{
-        this.setState({
-            [e.target.name] : e.target.value
-        })
-        return (
-                    this.props.subcategories.map(subcategory=>
-                       { 
-                        if( subcategory.category_id === parseInt(this.state.category)){
-                            return <option value={subcategory.name}>{subcategory.name}</option>
-                                }
-                        }
-                    )
-    )
-    }
 
 
     render() {
@@ -140,7 +126,7 @@ class PostForm extends Component {
                 <br/>
                 <label>Subcategory: </label>
                 <br/>
-                <select value={this.state.subcategory} onChange={this.handleDropdown} name="subcategory">
+                <select value={this.state.subcategory} onChange={this.handleChange} name="subcategory">
                     <option value =""> </option>
                     <DropdownOptions categoryID={this.state.category} subcategories={this.props.subcategories}/>
                 </select>
