@@ -7,7 +7,6 @@ const PostList = (props) => {
         //had to spread props.posts because when calling sort on props.post directly, it mutates the original array 
         return (
             <div>
-                <h1>True</h1>
                  {[...props.posts].sort((a, b) => a.title.localeCompare(b.title)).map(post =>
                     <>
                     <h4 className="group-postings"><Link to={`/subcategories/${post.subcategory_id}/posts/${post.id}`}>{post.title} - {new Date(post.created_at).toLocaleDateString()}</Link></h4>
@@ -18,7 +17,6 @@ const PostList = (props) => {
         
         return (
             <div>
-                <h1>No</h1>
                 {props.posts.map(post =>
                     <>
                     <h4 className="group-postings"><Link to={`/subcategories/${post.subcategory_id}/posts/${post.id}`}>{post.title} - {new Date(post.created_at).toLocaleDateString()}</Link></h4>

@@ -15,25 +15,14 @@ class Posts extends Component {
 
     
     handleClick = (e) =>{
-        e.preventDefault()
-
+        // e.preventDefault()
         this.setState(prevState => ({
             filter: !prevState.filter
           }))
        
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //         if (prevState.filter === true) {
-    //             this.props.posts.sort((a, b) => a.title.localeCompare(b.title))
-    //         }else{
-    //             this.props.posts.sort((a, b) => a.created_at.localeCompare(b.created_at))
-    //         }
-    // }
-
-
     render(){
-
 
     if (this.props.posts.length === 0){
         return (<div className='center'>
@@ -43,7 +32,9 @@ class Posts extends Component {
         return (
             <>
                 <h2 className="postings-title">{this.props.title}</h2>
-                <button onClick={this.handleClick} value={this.state.filter} name="filter">{ this.state.filter? 'SORT: ON' : "SORT OFF"}</button>
+                <button onClick={this.handleClick} value={this.state.filter} style={{ background: '#D21034' , color:'white'}} name="filter" >{ this.state.filter? 'SORT: ON' : "SORT OFF"}</button>
+                <br></br>
+                <br></br>
                 <PostList posts={this.props.posts} filter={this.state.filter}/>
             
             </>
