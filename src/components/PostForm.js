@@ -148,3 +148,8 @@ function mapStateToProps(globalState) {
 }
 
 export default connect(mapStateToProps, {addPosts})(PostForm);
+
+
+
+
+

@@ -8,7 +8,7 @@ import Posts from '../containers/Posts';
 import PostForm from './PostForm';
 import Post from './Post';
 
-const BrowserRouter = () => {
+const Routes = () => {
     return (
         <Switch>
             <Route exact path ='/' component={Categories}/>
@@ -26,4 +26,4 @@ const BrowserRouter = () => {
     );
 };
 
-export default BrowserRouter;
+export default Routes;

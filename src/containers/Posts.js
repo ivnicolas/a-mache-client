@@ -1,24 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {connect} from "react-redux"
 import { Link } from 'react-router-dom';
+import PostList from '../components/PostList';
 
-const Posts = (props) => {
-    if (props.posts.length === 0){
+
+class Posts extends Component {
+    constructor(props){
+        super()
+        this.state = {
+            filter: false
+
+        }
+    }
+
+    
+    handleClick = (e) =>{
+        e.preventDefault()
+
+        this.setState(prevState => ({
+            filter: !prevState.filter
+          }))
+       
+    }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //         if (prevState.filter === true) {
+    //             this.props.posts.sort((a, b) => a.title.localeCompare(b.title))
+    //         }else{
+    //             this.props.posts.sort((a, b) => a.created_at.localeCompare(b.created_at))
+    //         }
+    // }
+
+
+    render(){
+
+
+    if (this.props.posts.length === 0){
         return (<div className='center'>
             <h1 className="no-posts"> No Posts Found...</h1>
             </div>)
     }else {
         return (
             <>
-                <h2 className="postings-title">{props.title}</h2>
-                {props.posts.map(post =>
-                    <>
-                    <h4 className="group-postings"><Link to={`/subcategories/${post.subcategory_id}/posts/${post.id}`}>{post.title} - {new Date(post.created_at).toLocaleDateString()}</Link></h4>
-                    </>)}
+                <h2 className="postings-title">{this.props.title}</h2>
+                <button onClick={this.handleClick} value={this.state.filter} name="filter">{ this.state.filter? 'SORT: ON' : "SORT OFF"}</button>
+                <PostList posts={this.props.posts} filter={this.state.filter}/>
+            
             </>
         );
     }
-};
+    };
+
+}       
 
 function mapStateToProps(globalState, ownProps){
     if (ownProps.match.params.categoryId){

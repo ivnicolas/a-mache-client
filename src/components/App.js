@@ -2,7 +2,7 @@ import '../App.css';
 import React, { Component } from 'react';
 import Header from './Header.js';
 import NavBar from "./NavBar"
-import BrowserRouter from './BrowserRouter';
+import Routes from './Routes';
 import {connect} from "react-redux"
 
 import Footer from './Footer'
@@ -25,7 +25,7 @@ class App extends Component {
          <div id="content-wrap">
         <Header/>
         <NavBar/>
-        <BrowserRouter/>
+        <Routes/>
         </div>
         <Footer/>
       </div>
